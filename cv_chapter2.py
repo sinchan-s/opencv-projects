@@ -12,7 +12,7 @@ img2[:] = 132, 20, 50'''
 cv2.line(img, (0, 0), (img.shape[1], img.shape[0]), (0, 255, 0), 3)
 cv2.rectangle(img, (0, 0), (250, 350), (0, 0, 255), 2)
 cv2. circle(img, (400, 50), 30, (200, 111, 0), 5)
-cv2.putText(img, "hey its working", (250, 100), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 255, 255), 1)
+cv2.putText(img, "hey its working", (250, 100), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 1)
 
 cv2.imshow("image", img)
 # cv2.imshow("image2", img2)
