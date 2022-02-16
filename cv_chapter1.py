@@ -2,8 +2,22 @@ import cv2
 import numpy as np
 
 img = cv2.imread("D:\Pictures\pp.jpg")
-kernel = np.ones((5, 5), np.uint8)
+print(img.shape)
 
+imgResize = cv2.resize(img, (300, 200))
+print(imgResize.shape)
+
+imgCropped = img[0:200, 200:300]
+
+cv2.imshow("image", img)
+#cv2.imshow("image-resize", imgResize)
+cv2.imshow("image-cropped", imgCropped)
+
+cv2.waitKey(0)
+
+# kernel = np.ones((5, 5), np.uint8)
+
+'''
 # Different cv2 functions
 imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 imgBlur1 = cv2.GaussianBlur(imgGray, (1, 1), 0)
@@ -26,7 +40,7 @@ cv2.imshow("outputEroded", imgEroded)
 cv2.imshow("outputEroded", imgEroded)
 cv2.waitKey(0)
 
-'''
+
 cap = cv2.VideoCapture(0)
 cap.set(3,640)
 cap.set(4,480)
