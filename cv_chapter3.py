@@ -1,7 +1,7 @@
 import cv2
 import numpy as np
 
-img = cv2.imread("D:\Pictures\coding.jpg")  # size is quite big
+img = cv2.imread("D:\Pictures\coding.jpg")  # size is quite big so its resized
 imgResize = cv2.resize(img, (1000,700))
 
 width, height = 350, 250
