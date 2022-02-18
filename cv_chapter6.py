@@ -1,9 +1,6 @@
 import cv2
 import numpy as np
 
-def empty(z):
-    pass
-
 def stackImages(scale, imgArray):
     rows = len(imgArray)
     cols = len(imgArray[0])
@@ -36,35 +33,19 @@ def stackImages(scale, imgArray):
         ver = hor
     return ver
 
-path = "D:\Pictures\lambo.png"
-cv2.namedWindow("TrackBars")
-cv2.resizeWindow("TrackBars", 640, 240)
-cv2.createTrackbar("Hue Min", "TrackBars", 0, 179, empty)
-cv2.createTrackbar("Hue Max", "TrackBars", 19, 179, empty)
-cv2.createTrackbar("Sat Min", "TrackBars", 110, 255, empty)
-cv2.createTrackbar("Sat Max", "TrackBars", 240, 255, empty)
-cv2.createTrackbar("Val Min", "TrackBars", 150, 255, empty)
-cv2.createTrackbar("Val Max", "TrackBars", 255, 255, empty)
+def getContours(img):
+    contours, hierarchy = cv2.findContours(img, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-while True:
-    img = cv2.imread(path)
-    imgHSV = cv2.cvtColor(img, cv2.COLOR_BGR2HSV)
-    h_min = cv2.getTrackbarPos("Hue Min", "TrackBars")
-    h_max = cv2.getTrackbarPos("Hue Max", "TrackBars")
-    s_min = cv2.getTrackbarPos("Sat Min", "TrackBars")
-    s_max = cv2.getTrackbarPos("Sat Max", "TrackBars")
-    v_min = cv2.getTrackbarPos("Val Min", "TrackBars")
-    v_max = cv2.getTrackbarPos("Val Max", "TrackBars")
-    lower = np.array([h_min, s_min, v_min])
-    upper = np.array([h_max, s_max, v_max])
-    mask = cv2.inRange(imgHSV, lower, upper)
-    imgResult = cv2.bitwise_and(img, img, mask=mask)
-    #cv2.imshow("image", img)
-    #cv2.imshow("image-hsv", imgHSV)
-    #cv2.imshow("image-mask", mask)
-    #cv2.imshow("image-result", imgResult)
-    # above display functions summed up into below single function
-    imgStack = stackImages(0.6, ([img, imgHSV], [mask, imgResult]))
-    cv2.imshow("img-stack", imgStack)
 
-    cv2.waitKey(1)
+path = "D:\Pictures\shapes.png"
+img = cv2.imread(path)
+
+imgGray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+imgBlur = cv2.GaussianBlur(imgGray, (7, 7), 1)
+imgCanny = cv2.Canny(imgBlur, 50, 50)
+imgBlank = np.zeros_like(img)
+imgStack = stackImages(0.6, ([img, imgGray, imgBlur],
+                             [imgCanny, imgBlank, imgBlank]))
+cv2.imshow("image-stack", imgStack)
+
+cv2.waitKey(0)
