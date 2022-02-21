@@ -1,5 +1,5 @@
 # Ignore venv folder
-/venv
+.idea
 
 # Ignore cascade files
-/haarcascades
+.haarcascades
