@@ -9,6 +9,6 @@
 7. [Chapter-7](https://github.com/sinchan-s/opencv-projects/blob/master/cv_chapter7.py) - Face detection
 
 ### Projects developed:
-[Webcam color picker](https://github.com/sinchan-s/opencv-projects/blob/master/cam_colorfinder.py) - Finding/Selecting color by webcam through hue, saturation & value controls.   
-[Document scanner](https://github.com/sinchan-s/opencv-projects/blob/master/doc_scanner.py) - Scanning a document in a given image.   
-[Webcam painter](https://github.com/sinchan-s/opencv-projects/blob/master/webcam-paint.py) - Painter for live webcam video.
+1. [Webcam color picker](https://github.com/sinchan-s/opencv-projects/blob/master/cam_colorfinder.py) - Finding/Selecting color by webcam through hue, saturation & value controls.   
+2. [Document scanner](https://github.com/sinchan-s/opencv-projects/blob/master/doc_scanner.py) - Scanning a document in a given image.   
+3. [Webcam painter](https://github.com/sinchan-s/opencv-projects/blob/master/webcam-paint.py) - Painter for live webcam video.
